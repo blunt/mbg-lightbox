@@ -1,0 +1,36 @@
+// ------------------------------------------------------------------
+// BREAKPOINT SETTINGS
+// ------------------------------------------------------------------
+@mixin breakpoint($point) {
+    @if $point == tablet {
+        @media (min-width: 768px) { @content; }
+    }
+    @if $point == desktop {
+        @media (min-width: 1024px) { @content; }
+	}
+	@if $point == desktop-wide {
+        @media (min-width: 1280px) { @content; }
+    }
+}
+
+// ------------------------------------------------------------------
+// TRANSITION SETTINGS
+// ------------------------------------------------------------------
+@mixin transition($property: all, $duration: 0.3s) {
+	transition: $property $duration;
+}
+
+// ------------------------------------------------------------------
+// ICONS
+// ------------------------------------------------------------------
+@mixin icon ($size, $radius: 0px) {
+	width: $size;
+	height: $size;
+	line-height: $size;
+	text-align: center;
+	padding: 0;
+	@if $radius == 'round' {
+		-webkit-border-radius: $size;
+		border-radius: $size;
+	}
+}

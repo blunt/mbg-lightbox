@@ -1,0 +1,370 @@
+.basicSlider{position:relative;width:100%}.basicSlider__arrow,.basicSlider__dot{cursor:pointer}.basicSlider__container{position:relative;width:100%;height:100%;overflow:hidden}.basicSlider__slides{position:relative;display:flex;height:100%;transition:-webkit-transform .4s cubic-bezier(.51,.92,.24,1);transition:transform .4s cubic-bezier(.51,.92,.24,1);transition:transform .4s cubic-bezier(.51,.92,.24,1),-webkit-transform .4s cubic-bezier(.51,.92,.24,1);will-change:transform}.basicSlider__slide{flex:0 1 auto;width:100%;height:100%}
+
+.basicLightbox{position:fixed;display:flex;justify-content:center;align-items:center;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:.01;transition:opacity .4s ease;z-index:1000;will-change:opacity}.basicLightbox--visible{opacity:1}.basicLightbox__placeholder{max-width:100%;-webkit-transform:scale(.9);transform:scale(.9);transition:-webkit-transform .4s ease;transition:transform .4s ease;transition:transform .4s ease,-webkit-transform .4s ease;z-index:1;will-change:transform}.basicLightbox__placeholder>iframe:first-child:last-child,.basicLightbox__placeholder>img:first-child:last-child,.basicLightbox__placeholder>video:first-child:last-child{display:block;position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;max-width:95%;max-height:95%}.basicLightbox__placeholder>iframe:first-child:last-child,.basicLightbox__placeholder>video:first-child:last-child{pointer-events:auto}.basicLightbox__placeholder>img:first-child:last-child,.basicLightbox__placeholder>video:first-child:last-child{width:auto;height:auto}.basicLightbox--iframe .basicLightbox__placeholder,.basicLightbox--img .basicLightbox__placeholder,.basicLightbox--video .basicLightbox__placeholder{width:100%;height:100%;pointer-events:none}.basicLightbox--visible .basicLightbox__placeholder{-webkit-transform:scale(1);transform:scale(1)}
+
+@font-face {
+  font-family: 'Maax-Regular';
+  font-weight: 400;
+  font-display: swap;
+  src:  url('../fonts/maax-webfont.woff2') format('woff2'),
+        url('../fonts/maax-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Maax-Medium';
+  font-weight: 500;
+  font-display: swap;
+  src:  url('../fonts/maax-medium-webfont.woff2') format('woff2'),
+        url('../fonts/maax-medium-webfont.woff') format('woff');
+}
+
+html, body {
+    overscroll-behavior-x: none;
+    font-family: 'Maax-Regular';
+}
+
+.sunnyGraph {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: calc(clamp(14px, 5vw, 18px));
+    @include breakpoint (tablet) {
+        padding: 0 40px;
+    }
+    p {
+        @extend %flatten;
+        margin-bottom: 1.62em
+    }
+}
+
+.sunnyGraph__static {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: #3a4a2f;
+    color: $white;
+    @include breakpoint (desktop-wide) {
+        flex-direction: row;
+    }
+    &.flip {
+        @include breakpoint (desktop-wide) {
+            flex-direction: row-reverse;
+        }
+    }
+}
+
+.sunnyGraph__static--image {
+    width: 100%;
+    @include breakpoint (desktop-wide) {
+        width: 60%;    
+    }
+}
+
+.sunnyGraph__static--text {
+    width: 100%;
+    padding: calc(clamp(20px, 5vw, 50px));
+    @include breakpoint (desktop-wide) {
+        width: 40%;
+    }
+}
+
+.sunnyGraph__static--title {
+    margin-bottom: 20px;
+    font-family: 'Maax-Regular';
+    font-size: calc(clamp(26px, 5vw, 36px));
+    line-height: 1.2;
+}
+
+.sunnyGraph__nav {
+    display: grid;
+    margin: 10px 0;
+    @include breakpoint (desktop) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint (desktop-wide) {
+        grid-auto-flow: column;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .sunnyGraph__nav--image {
+        max-width: 320px;
+        margin: 0 auto;
+        @include breakpoint (desktop) {
+            grid-column: 1 / -1;
+        }
+        @include breakpoint (desktop-wide) {
+            max-width: 400px;
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+    }
+}
+
+.sunnyGraph__nav--block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    text-align: center;
+    @include breakpoint (desktop) {
+        padding: 20px 40px;
+    }
+    &:nth-of-type(1) {
+        @include breakpoint (desktop) {
+            margin-top: auto;
+        }
+        .sunnyGraph__nav--block__title {
+            background-color: #CF8443;
+        }
+        .sunnyGraph__nav--block__trigger {
+            background-color: #3D2007;
+        }
+    }
+    &:nth-of-type(2) {
+        @include breakpoint (desktop) {
+            margin-bottom: auto;
+        }
+        .sunnyGraph__nav--block__title {
+            background-color: #EAA997;
+        }
+        .sunnyGraph__nav--block__trigger {
+            background-color: #803C3C;
+        }
+    }
+    &:nth-of-type(3) {
+        @include breakpoint (desktop) {
+            margin-top: auto;
+        }
+        .sunnyGraph__nav--block__title {
+            background-color: #BEC9A1;
+        }
+        .sunnyGraph__nav--block__trigger {
+            background-color: #3A4A2E;
+        }
+    }
+    &:nth-of-type(4) {
+        @include breakpoint (desktop) {
+            margin-bottom: auto;
+        }
+        .sunnyGraph__nav--block__title {
+            background-color: #7685AC;
+        }
+        .sunnyGraph__nav--block__trigger {
+            background-color: #313F63;
+        }
+    }
+}
+
+.sunnyGraph__nav--block__title {
+    width: 100%;
+    padding: calc(clamp(12px, 2.5vw, 22px)) 20px;
+    color: #1E1E1E;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+.sunnyGraph__nav--block__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: calc(clamp(14px, 2.5vw, 28px)) 10px;
+    border: 0;
+    color: $white;
+    font-family: 'Maax-Medium';
+    font-size: calc(clamp(12px, 5vw, 14px));
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-transform: uppercase;
+    
+    img {
+        margin-left: 10px;
+    }
+}
+
+.sunnyGraph__popover {
+    display: flex;
+    flex-wrap: wrap;
+    background: #D5E0FB;
+    width: 90vw;
+    max-width: 1160px;
+    font-size: 14px;
+    p {
+        @extend %flatten;
+        margin-bottom: 20px;
+    }
+    .sunnyGraph__popover--image {
+        width: 100%;
+        @include breakpoint (desktop) {
+            width: 56%;
+        }
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .sunnyGraph__popover--text {
+        width: 100%;
+        text-align: left;
+        @include breakpoint (desktop) {
+            width: 44%;
+            text-align: center;
+        }
+    }
+    .sunnyGraph__popover--text__header {
+        @include breakpoint (tablet) {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid currentColor;
+        }
+        .sunnyGraph__popover--title {
+            margin: 20px 0 0;
+            padding: 0 20px;
+            font-family: 'Maax-Medium';
+            font-size: 24px;
+            line-height: 1.2;
+            text-align: left;
+            @include breakpoint (tablet) {
+                margin: 0;
+                padding: 20px;
+                font-size: 18px;
+            }
+        }
+        .sunnyGraph__popover--close {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 20px;
+            background: none;
+            border: 0;
+            border-bottom: 2px solid currentColor;
+            font-size: 14px;
+            font-family: 'Maax-Medium';
+            line-height: 1;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            @include breakpoint (tablet) {
+                width: auto;
+                border: 0;
+            }
+            img {
+                margin-left: 10px;
+            }
+        }
+    }
+    .sunnyGraph__popover--text__content {
+        padding: 20px;
+        @include breakpoint (desktop) {
+            padding: 30px;
+        }
+    }
+}
+
+.sunnyGraph__popover-2 {
+    flex-wrap: wrap;
+    .sunnyGraph__popover--image {
+        width: 50%;
+        @include breakpoint (desktop) {
+            width: 28%;
+        }
+        &.sunnyGraph__popover--image-2 {
+            border-left: 2px solid $white;
+            @include breakpoint (desktop) {
+                order: 2;    
+                border: 0;
+            }
+        }
+    }
+    .sunnyGraph__popover--text {
+        width: 100%;
+        @include breakpoint (desktop) {
+            order: 1;
+            width: 44%;
+        }
+    }
+}
+
+.sunnyGraph__popover-4 {
+    background: #7483AA;
+    color: $white;
+    .sunnyGraph__popover--slider {
+        .basicSlider__slide {
+            display: flex;
+            align-items: flex-start;
+            text-align: center;
+        }
+        .basicSlider__arrow {
+            position: absolute;
+            top: 50%;
+            display: flex;
+            width: 20px;
+            height: 20px;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-50%);
+            background: 0;
+            border: 0;
+            content: url('data:image/svg+xml; utf8, <svg width="10" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.05128 11.8358C0.409013 11.0576 0.681757 9.96382 1.31083 9.37065C3.62928 7.16183 5.62328 4.47609 7.20561 1.43092C8.08543 -0.256069 10.285 1.31664 9.40516 3.01451C7.87679 5.92978 6.01074 8.5517 3.8667 10.7964C5.50162 12.6856 7.22778 14.4502 9.03563 16.0805C10.3554 17.256 9.07962 19.9824 7.7555 18.8015C5.39092 16.6778 3.1506 14.3502 1.05128 11.8358Z" fill="white"/></svg>');
+            @include breakpoint (desktop) {
+                display: none;
+            }
+            &.basicSlider__arrow--right {
+                right: 0;
+                content: url('data:image/svg+xml; utf8, <svg width="10" height="21" viewBox="0 0 10 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.16674 12.8358C9.809 12.0576 9.53626 10.9638 8.90719 10.3706C6.58874 8.16183 4.59473 5.47609 3.01241 2.43092C2.13259 0.743931 -0.0669577 2.31664 0.812861 4.01451C2.34123 6.92978 4.20728 9.5517 6.35132 11.7964C4.71639 13.6856 2.99024 15.4502 1.18238 17.0805C-0.137343 18.256 1.13839 20.9824 2.46252 19.8015C4.8271 17.6778 7.06742 15.3502 9.16674 12.8358Z" fill="white"/></svg>');
+            }
+        }
+    }
+    .sunnyGraph__popover--text {
+        width: 100%;
+    }
+}
+
+.sunnyGraph__popover--slider__column--inner {
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 14px;
+    @include breakpoint (tablet) {
+        width: calc(100% / 3);
+        padding: 0 10px;
+    }
+    @include breakpoint (desktop) {
+        width: 20%;
+    }
+}
+
+.sunnyGraph__popover--slider__column--inner__image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 180px;
+    margin: 0 auto 10px;      
+    &::after {
+        display: block;
+        content: '';
+        padding-bottom: 100%;
+    }
+    img {
+        width: auto;
+        height: auto;
+    }
+}
+
+.sunnyGraph__popover--slider__column--inner__title {
+    margin-bottom: 10px;
+    font-family: 'Maax-Medium';
+    text-transform: uppercase;
+}
+
+.sunnyGraph__sources {
+    font-size: 12px;
+    padding: 20px 0;
+}

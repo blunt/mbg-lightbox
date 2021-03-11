@@ -1,0 +1,10 @@
+// based on hugo giraudel's 7-1 structure
+
+// sass utils
+@import "utils/variables";
+@import "utils/mixins";
+@import "utils/placeholders";
+@import "utils/functions";
+
+// module stuff
+@import "modules/components";
