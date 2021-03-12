@@ -228,6 +228,8 @@ html, body {
     background-color: #CF8443; }
   .sunnyGraph__nav--block:nth-of-type(1) .sunnyGraph__nav--block__trigger {
     background-color: #3D2007; }
+    .sunnyGraph__nav--block:nth-of-type(1) .sunnyGraph__nav--block__trigger::before {
+      background-color: #6A0C03; }
   @media (min-width: 1024px) {
     .sunnyGraph__nav--block:nth-of-type(2) {
       margin-bottom: auto; } }
@@ -235,6 +237,8 @@ html, body {
     background-color: #EAA997; }
   .sunnyGraph__nav--block:nth-of-type(2) .sunnyGraph__nav--block__trigger {
     background-color: #803C3C; }
+    .sunnyGraph__nav--block:nth-of-type(2) .sunnyGraph__nav--block__trigger::before {
+      background-color: #B7455E; }
   @media (min-width: 1024px) {
     .sunnyGraph__nav--block:nth-of-type(3) {
       margin-top: auto; } }
@@ -242,6 +246,8 @@ html, body {
     background-color: #BEC9A1; }
   .sunnyGraph__nav--block:nth-of-type(3) .sunnyGraph__nav--block__trigger {
     background-color: #3A4A2E; }
+    .sunnyGraph__nav--block:nth-of-type(3) .sunnyGraph__nav--block__trigger::before {
+      background-color: #6C8B55; }
   @media (min-width: 1024px) {
     .sunnyGraph__nav--block:nth-of-type(4) {
       margin-bottom: auto; } }
@@ -249,6 +255,8 @@ html, body {
     background-color: #7685AC; }
   .sunnyGraph__nav--block:nth-of-type(4) .sunnyGraph__nav--block__trigger {
     background-color: #313F63; }
+    .sunnyGraph__nav--block:nth-of-type(4) .sunnyGraph__nav--block__trigger::before {
+      background-color: #112D74; }
 
 .sunnyGraph__nav--block__title {
   width: 100%;
@@ -259,6 +267,7 @@ html, body {
   letter-spacing: 1px; }
 
 .sunnyGraph__nav--block__trigger {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -277,7 +286,30 @@ html, body {
   line-height: 1;
   letter-spacing: 1.5px;
   text-align: center;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0); }
+  .sunnyGraph__nav--block__trigger:hover::before {
+    opacity: 1;
+    -webkit-transform: scaleX(1);
+        -ms-transform: scaleX(1);
+            transform: scaleX(1); }
+  .sunnyGraph__nav--block__trigger::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transform: scaleX(0);
+        -ms-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }
   .sunnyGraph__nav--block__trigger img {
     margin-left: 10px; }
 
