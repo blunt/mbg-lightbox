@@ -37,6 +37,25 @@ html, body {
     }
 }
 
+.sunnyGraph__animIn {
+    &.sunnyGraph__slideIn {
+        transition: all 500ms ease;
+        opacity: 0;
+        transform: translateY(10%);
+        &.sunnyGraph__slideIn--visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .sunnyGraph__fadeIn--letter {
+        opacity: 0;
+        transition: all 500ms ease;
+        &.sunnyGraph__fadeIn--letter--in {
+            opacity: 1;
+        }
+    }
+}
+
 .sunnyGraph__static {
     display: flex;
     align-items: center;
@@ -113,6 +132,7 @@ html, body {
     &:nth-of-type(1) {
         @include breakpoint (desktop) {
             margin-top: auto;
+            transition-delay: 250ms;
         }
         .sunnyGraph__nav--block__title {
             background-color: #CF8443;
@@ -127,6 +147,7 @@ html, body {
     &:nth-of-type(2) {
         @include breakpoint (desktop) {
             margin-bottom: auto;
+            transition-delay: 500ms;
         }
         .sunnyGraph__nav--block__title {
             background-color: #EAA997;
@@ -141,6 +162,7 @@ html, body {
     &:nth-of-type(3) {
         @include breakpoint (desktop) {
             margin-top: auto;
+            transition-delay: 750ms;
         }
         .sunnyGraph__nav--block__title {
             background-color: #BEC9A1;
@@ -155,6 +177,7 @@ html, body {
     &:nth-of-type(4) {
         @include breakpoint (desktop) {
             margin-bottom: auto;
+            transition-delay: 1000ms;
         }
         .sunnyGraph__nav--block__title {
             background-color: #7685AC;
@@ -269,6 +292,7 @@ html, body {
             }
         }
         .sunnyGraph__popover--close {
+            position: relative;
             width: 100%;
             display: flex;
             align-items: center;
@@ -283,9 +307,31 @@ html, body {
             line-height: 1;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            transform: translateZ(0);
             @include breakpoint (tablet) {
+                align-self: stretch;
                 width: auto;
                 border: 0;
+            }
+            &:hover {
+                &::before {
+                    opacity: 1;
+                    transform: scaleX(1);
+                }
+            }
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                opacity: 0;
+                background: #9EB6FF;
+                transform: scaleX(0);
+                @include transition;
             }
             img {
                 margin-left: 10px;
@@ -399,4 +445,30 @@ html, body {
 .sunnyGraph__sources {
     font-size: 12px;
     padding: 20px 0;
+}
+
+.sunnyGraph__altBtn {
+    transform: translateZ(0);
+    overflow: hidden;
+    &:hover {
+        color: white;
+        &::before {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        background: #3a4a2f;
+        transform: scaleX(0);
+        @include transition;
+    }
 }

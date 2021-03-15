@@ -132,6 +132,28 @@ html, body {
   .sunnyGraph p {
     margin-bottom: 1.62em; }
 
+.sunnyGraph__animIn.sunnyGraph__slideIn {
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  opacity: 0;
+  -webkit-transform: translateY(10%);
+      -ms-transform: translateY(10%);
+          transform: translateY(10%); }
+  .sunnyGraph__animIn.sunnyGraph__slideIn.sunnyGraph__slideIn--visible {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0); }
+
+.sunnyGraph__animIn .sunnyGraph__fadeIn--letter {
+  opacity: 0;
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease; }
+  .sunnyGraph__animIn .sunnyGraph__fadeIn--letter.sunnyGraph__fadeIn--letter--in {
+    opacity: 1; }
+
 .sunnyGraph__static {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -223,7 +245,10 @@ html, body {
       padding: 20px 40px; } }
   @media (min-width: 1024px) {
     .sunnyGraph__nav--block:nth-of-type(1) {
-      margin-top: auto; } }
+      margin-top: auto;
+      -webkit-transition-delay: 250ms;
+           -o-transition-delay: 250ms;
+              transition-delay: 250ms; } }
   .sunnyGraph__nav--block:nth-of-type(1) .sunnyGraph__nav--block__title {
     background-color: #CF8443; }
   .sunnyGraph__nav--block:nth-of-type(1) .sunnyGraph__nav--block__trigger {
@@ -232,7 +257,10 @@ html, body {
       background-color: #6A0C03; }
   @media (min-width: 1024px) {
     .sunnyGraph__nav--block:nth-of-type(2) {
-      margin-bottom: auto; } }
+      margin-bottom: auto;
+      -webkit-transition-delay: 500ms;
+           -o-transition-delay: 500ms;
+              transition-delay: 500ms; } }
   .sunnyGraph__nav--block:nth-of-type(2) .sunnyGraph__nav--block__title {
     background-color: #EAA997; }
   .sunnyGraph__nav--block:nth-of-type(2) .sunnyGraph__nav--block__trigger {
@@ -241,7 +269,10 @@ html, body {
       background-color: #B7455E; }
   @media (min-width: 1024px) {
     .sunnyGraph__nav--block:nth-of-type(3) {
-      margin-top: auto; } }
+      margin-top: auto;
+      -webkit-transition-delay: 750ms;
+           -o-transition-delay: 750ms;
+              transition-delay: 750ms; } }
   .sunnyGraph__nav--block:nth-of-type(3) .sunnyGraph__nav--block__title {
     background-color: #BEC9A1; }
   .sunnyGraph__nav--block:nth-of-type(3) .sunnyGraph__nav--block__trigger {
@@ -250,7 +281,10 @@ html, body {
       background-color: #6C8B55; }
   @media (min-width: 1024px) {
     .sunnyGraph__nav--block:nth-of-type(4) {
-      margin-bottom: auto; } }
+      margin-bottom: auto;
+      -webkit-transition-delay: 1000ms;
+           -o-transition-delay: 1000ms;
+              transition-delay: 1000ms; } }
   .sunnyGraph__nav--block:nth-of-type(4) .sunnyGraph__nav--block__title {
     background-color: #7685AC; }
   .sunnyGraph__nav--block:nth-of-type(4) .sunnyGraph__nav--block__trigger {
@@ -371,6 +405,7 @@ html, body {
         padding: 20px;
         font-size: 18px; } }
   .sunnyGraph__popover .sunnyGraph__popover--text__header .sunnyGraph__popover--close {
+    position: relative;
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -391,11 +426,37 @@ html, body {
     font-family: 'Maax-Medium';
     line-height: 1;
     letter-spacing: 1.5px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0); }
     @media (min-width: 768px) {
       .sunnyGraph__popover .sunnyGraph__popover--text__header .sunnyGraph__popover--close {
+        -ms-flex-item-align: stretch;
+            align-self: stretch;
         width: auto;
         border: 0; } }
+    .sunnyGraph__popover .sunnyGraph__popover--text__header .sunnyGraph__popover--close:hover::before {
+      opacity: 1;
+      -webkit-transform: scaleX(1);
+          -ms-transform: scaleX(1);
+              transform: scaleX(1); }
+    .sunnyGraph__popover .sunnyGraph__popover--text__header .sunnyGraph__popover--close::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      background: #9EB6FF;
+      -webkit-transform: scaleX(0);
+          -ms-transform: scaleX(0);
+              transform: scaleX(0);
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s; }
     .sunnyGraph__popover .sunnyGraph__popover--text__header .sunnyGraph__popover--close img {
       margin-left: 10px; }
   .sunnyGraph__popover .sunnyGraph__popover--text__content {
@@ -510,3 +571,32 @@ html, body {
 .sunnyGraph__sources {
   font-size: 12px;
   padding: 20px 0; }
+
+.sunnyGraph__altBtn {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  overflow: hidden; }
+  .sunnyGraph__altBtn:hover {
+    color: white; }
+    .sunnyGraph__altBtn:hover::before {
+      opacity: 1;
+      -webkit-transform: scaleX(1);
+          -ms-transform: scaleX(1);
+              transform: scaleX(1); }
+  .sunnyGraph__altBtn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background: #3a4a2f;
+    -webkit-transform: scaleX(0);
+        -ms-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }
