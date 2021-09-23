@@ -74,7 +74,7 @@ html, body {
         }
     }
     &__copy {
-        padding: 0 var(--mv-space-1);
+        padding: var(--mv-space-1);
         font-size: var(--mv-fs-3);
     }
     &__blocks {
@@ -176,25 +176,7 @@ html, body {
                 font-size: var(--mv-fs-2);
             }
             &:hover {
-                color: $blue-dark;
-                &::before {
-                    opacity: 1;
-                    transform: scaleX(1);
-                }
-            }
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                z-index: -1;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                opacity: 0;
-                transform: scaleX(0);
-                background: $blue-med;
-                @include transition;
+                background: darken($blue-dark, 10%);
             }
         }
         &-block__bg {
@@ -207,7 +189,7 @@ html, body {
     }
     &__sources {
         margin-top: var(--mv-space-1);
-        padding: var(--mv-space-2);
+        padding: var(--mv-space-1);
         background-color: $blue-med;
         color: $blue-dark;
         h2 {
@@ -216,6 +198,7 @@ html, body {
             text-transform: uppercase;
         }
         ol {
+            margin: var(--mv-space-1) 0;
             padding: 0 0 0 20px;
             font-size: 14px;
             li {
@@ -252,7 +235,7 @@ html, body {
             padding: 30px 60px 10px var(--mv-space-1);
             border-top-right-radius: 200px;
             @include breakpoint (desktop) {
-                max-width: 50%;
+                max-width: 40%;
             }
             h1 {
                 color: $blue-dark;
@@ -264,10 +247,13 @@ html, body {
         }
         &__content {
             position: relative;
-            padding: 80px var(--mv-space-1) 100px;
+            padding: 80px var(--mv-space-1) 150px;
             background-color: $blue-med;
             @include breakpoint (desktop) {
-                padding-bottom: var(--mv-space-1);
+                padding-bottom: 60px;
+            }
+            & > p {
+                max-width: 750px;
             }
         }
         &__close {
@@ -278,6 +264,7 @@ html, body {
             display: block;
             background: 0;
             border: 0;
+            padding: 0;
             color: $dark;
             svg {
                 width: 30px;
@@ -303,8 +290,8 @@ html, body {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 150px;
-            height: 75px;
+            width: 200px;
+            height: 100px;
             background: $blue-dark;
             border: 0;
             border-radius: 50px 50px 0 0;
@@ -333,6 +320,7 @@ html, body {
             background: $white;
             padding: var(--mv-space-1);
             text-align: center;
+            font-size: 12px;
             img {
                 margin: 0 0 20px;
             }
@@ -340,6 +328,10 @@ html, body {
                 font-family: 'Maax-Bold';
                 font-size: var(--mv-fs-2);
                 margin: 0 0 20px;
+            }
+            p {
+                max-width: 600px;
+                margin: 0 auto;
             }
         }
     }
