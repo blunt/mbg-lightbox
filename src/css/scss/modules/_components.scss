@@ -85,17 +85,14 @@ html, body {
             grid-template-columns: repeat(2, 1fr);
         }
         &-block {
-            aspect-ratio: 1 / 1;
             display: flex;
             transform: translateZ(0);
-            @supports not (display: grid) {
-                position: relative;
-                &::after {
-                    content: '';
-                    display: block;
-                    padding-bottom: 100%;
-                }
-            } 
+            position: relative;
+            &::after {
+                content: '';
+                display: block;
+                padding-bottom: 100%;
+            }
             h2 {
                 font-family: 'Maax-Bold';
                 font-size: var(--mv-fs-2);
@@ -283,6 +280,8 @@ html, body {
             border: 0;
             color: $dark;
             svg {
+                width: 30px;
+                height: 30px;
                 path {
                     @include transition;
                 }

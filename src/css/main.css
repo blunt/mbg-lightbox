@@ -151,19 +151,16 @@ html, body {
       .multiVit__blocks {
         grid-template-columns: repeat(2, 1fr); } }
     .multiVit__blocks-block {
-      aspect-ratio: 1 / 1;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-transform: translateZ(0);
-              transform: translateZ(0); }
-      @supports not (display: grid) {
-        .multiVit__blocks-block {
-          position: relative; }
-          .multiVit__blocks-block::after {
-            content: '';
-            display: block;
-            padding-bottom: 100%; } }
+              transform: translateZ(0);
+      position: relative; }
+      .multiVit__blocks-block::after {
+        content: '';
+        display: block;
+        padding-bottom: 100%; }
       .multiVit__blocks-block h2 {
         font-family: 'Maax-Bold';
         font-size: var(--mv-fs-2);
@@ -363,10 +360,13 @@ html, body {
       background: 0;
       border: 0;
       color: #1E1E1E; }
-      .multiVit__popover__close svg path {
-        -webkit-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s; }
+      .multiVit__popover__close svg {
+        width: 30px;
+        height: 30px; }
+        .multiVit__popover__close svg path {
+          -webkit-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          transition: all 0.3s; }
       .multiVit__popover__close:hover svg path {
         stroke: #6b979a; }
     .multiVit__popover__top {
